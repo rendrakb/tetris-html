@@ -1,2 +1,1 @@
-Tetris, single html file  
-todo: mobile responsivity  
+Tetris, single html file
