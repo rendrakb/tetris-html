@@ -6,8 +6,8 @@
     <title>Tetris</title>
     <style>
       :root {
-        --primary: #00ffff;
-        --secondary: #ff00ff;
+        --primary: lightskyblue;
+        --secondary: plum;
         --background: #121212;
         --grid-color: rgba(255, 255, 255, 0.1);
         --text: #ffffff;
@@ -57,7 +57,7 @@
         padding: 10px;
         border-radius: 10px;
         background-color: rgba(0, 0, 0, 0.5);
-        box-shadow: 0 0 20px rgba(0, 255, 255, 0.3);
+        box-shadow: 0 0 20px plum;
         position: relative;
         overflow: hidden;
       }
@@ -95,6 +95,7 @@
 
       .game-area {
         position: relative;
+        gap: 5px;
       }
 
       #game-board {
@@ -104,7 +105,7 @@
         display: grid;
         grid-template-columns: repeat(10, 1fr);
         grid-template-rows: repeat(20, 1fr);
-        gap: 1px;
+        gap: 2px;
         background-color: rgba(0, 0, 0, 0.8);
         position: relative;
         overflow: hidden;
@@ -152,6 +153,7 @@
         display: flex;
         flex-direction: column;
         align-items: center;
+        margin-top: 5px;
       }
 
       .preview-title,
@@ -241,8 +243,9 @@
 
       button:hover {
         background-color: var(--secondary);
+        color: black;
         transform: translateY(-2px);
-        box-shadow: 0 5px 15px rgba(255, 0, 255, 0.4);
+        box-shadow: 0 5px 15px plum;
       }
 
       .i-piece {
@@ -372,7 +375,7 @@
 
       @keyframes pulse {
         0% {
-          box-shadow: 0 0 0 0 rgba(0, 255, 255, 0.7);
+          box-shadow: 0 0 0 0 lightskyblue;
         }
         70% {
           box-shadow: 0 0 0 10px rgba(0, 255, 255, 0);
@@ -465,6 +468,7 @@
         #game-board {
           width: min(60vw, 300px);
           height: calc(min(60vw, 300px) * 2);
+          gap: 5px;
         }
 
         .piece-boxes {
