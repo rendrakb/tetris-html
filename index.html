@@ -432,8 +432,15 @@
         }
 
         #game-board {
-          width: min(90vw, 300px);
-          height: calc(min(90vw, 300px) * 2);
+          width: min(60vw, 300px);
+          height: calc(min(60vw, 300px) * 2);
+        }
+
+        .piece-boxes {
+          display: flex;
+          gap: 5px;
+          width: 100%;
+          justify-content: center;
         }
 
         .side-panel {
@@ -443,21 +450,38 @@
 
         #next-piece,
         #hold-piece {
-          width: min(50vw, 120px);
-          height: min(50vw, 120px);
+          width: min(20vw, 100px);
+          height: min(20vw, 100px);
         }
 
         .settings-content {
           width: min(90vw, 500px);
         }
+
+        .preview-box,
+        .hold-box {
+          flex: 1;
+          min-width: 0;
+        }
+
+        .side-panel {
+          display: flex;
+          flex-wrap: wrap;
+          gap: 5px;
+        }
+
+        .stats,
+        .controls {
+          flex-basis: 100%;
+        }
       }
+
     </style>
   </head>
   <body>
     <div class="background"></div>
     <div class="container">
       <div class="game-area">
-
         <div class="buttons">
           <button id="settings-btn-alt">Settings</button>
           <button id="pause-btn">Pause</button>
@@ -483,14 +507,15 @@
       </div>
 
       <div class="side-panel">
-        <div class="preview-box">
-          <div class="preview-title">Next</div>
-          <div id="next-piece"></div>
-        </div>
-
-        <div class="hold-box">
-          <div class="hold-title">Hold (C)</div>
-          <div id="hold-piece"></div>
+        <div class="piece-boxes">
+          <div class="preview-box">
+            <div class="preview-title">Next</div>
+            <div id="next-piece"></div>
+          </div>
+          <div class="hold-box">
+            <div class="hold-title">Hold (C)</div>
+            <div id="hold-piece"></div>
+          </div>
         </div>
 
         <div class="stats">
@@ -858,7 +883,7 @@
       });
 
       const { shape, className } = nextPiece;
-      const offsetX = (4.5 - shape[0].length) / 2;
+      const offsetX = (5 - shape[0].length) / 2;
       const offsetY = (5 - shape.length) / 2;
 
       for (let y = 0; y < shape.length; y++) {
@@ -881,7 +906,7 @@
 
       if (holdPiece) {
         const { shape, className } = holdPiece;
-        const offsetX = (4.5 - shape[0].length) / 2;
+        const offsetX = (5 - shape[0].length) / 2;
         const offsetY = (5 - shape.length) / 2;
 
         for (let y = 0; y < shape.length; y++) {
