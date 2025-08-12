@@ -53,8 +53,8 @@
 
       .container {
         display: flex;
-        gap: 20px;
-        padding: 20px;
+        gap: 5px;
+        padding: 10px;
         border-radius: 10px;
         background-color: rgba(0, 0, 0, 0.5);
         box-shadow: 0 0 20px rgba(0, 255, 255, 0.3);
@@ -139,7 +139,7 @@
       .side-panel {
         display: flex;
         flex-direction: column;
-        gap: 20px;
+        gap: 5px;
         width: 200px;
       }
 
@@ -156,8 +156,8 @@
 
       .preview-title,
       .hold-title {
-        font-size: 18px;
-        margin-bottom: 10px;
+        font-size: 0.75rem;
+        margin-bottom: 5px;
         text-align: center;
         text-transform: uppercase;
         letter-spacing: 2px;
@@ -179,13 +179,14 @@
         background-color: rgba(0, 0, 0, 0.6);
         border: 2px solid var(--primary);
         border-radius: 5px;
-        padding: 15px;
+        padding: 10px;
+        font-size:0.75rem;
       }
 
       .stat {
         display: flex;
         justify-content: space-between;
-        margin-bottom: 10px;
+        margin-bottom: 5x;
       }
 
       .stat-value {
@@ -197,13 +198,14 @@
         background-color: rgba(0, 0, 0, 0.6);
         border: 2px solid var(--primary);
         border-radius: 5px;
-        padding: 15px;
+        padding: 10px;
+        font-size: 0.75rem;
       }
 
       .control-row {
         display: flex;
         justify-content: space-between;
-        margin-bottom: 8px;
+        margin-bottom: 5px;
       }
 
       .key {
@@ -221,14 +223,14 @@
         display: flex;
         gap: 10px;
         justify-content: center;
-        margin-top: 20px;
+        margin-top: 5px;
       }
 
       button {
         background-color: var(--primary);
         color: black;
         border: none;
-        padding: 10px 20px;
+        padding: 10px 10px;
         border-radius: 5px;
         cursor: pointer;
         font-weight: bold;
@@ -294,7 +296,7 @@
       }
 
       .overlay h2 {
-        font-size: 32px;
+        font-size: 1rem;
         margin-bottom: 20px;
         color: var(--primary);
         text-shadow: 0 0 10px var(--primary);
@@ -326,7 +328,7 @@
         background-color: var(--background);
         border: 2px solid var(--primary);
         border-radius: 10px;
-        padding: 20px;
+        padding: 10px;
         position: relative;
       }
 
@@ -337,7 +339,7 @@
         background: none;
         border: none;
         color: var(--text);
-        font-size: 24px;
+        font-size: 0.75rem;
         cursor: pointer;
       }
 
@@ -345,7 +347,7 @@
         display: flex;
         justify-content: space-between;
         align-items: center;
-        margin-bottom: 15px;
+        margin-bottom: 5px;
         padding-bottom: 10px;
         border-bottom: 1px solid rgba(255, 255, 255, 0.1);
       }
@@ -354,7 +356,7 @@
         background-color: rgba(255, 255, 255, 0.1);
         border: 1px solid var(--primary);
         color: var(--text);
-        padding: 8px 15px;
+        padding: 8px 10px;
         border-radius: 4px;
         cursor: pointer;
         min-width: 80px;
@@ -410,6 +412,39 @@
         border: 2px dashed white;
         background-color: transparent !important;
         box-shadow: none !important;
+      }
+
+      @media (max-width: 768px) {
+        body {
+          overflow-y: auto;
+          padding: 10px;
+        }
+
+        .container {
+          flex-direction: column;
+          align-items: center;
+          gap: 5px;
+        }
+
+        #game-board {
+          width: min(90vw, 300px);
+          height: calc(min(90vw, 300px) * 2);
+        }
+
+        .side-panel {
+          width: 100%;
+          max-width: 320px;
+        }
+
+        #next-piece,
+        #hold-piece {
+          width: min(50vw, 120px);
+          height: min(50vw, 120px);
+        }
+
+        .settings-content {
+          width: min(90vw, 500px);
+        }
       }
     </style>
   </head>
@@ -545,7 +580,6 @@
 
 <script>
   document.addEventListener("DOMContentLoaded", () => {
-
     const BOARD_WIDTH = 10;
     const BOARD_HEIGHT = 20;
     const BOARD_SIZE = BOARD_WIDTH * BOARD_HEIGHT;
@@ -818,8 +852,8 @@
       });
 
       const { shape, className } = nextPiece;
-      const offsetX = (4 - shape[0].length) / 2;
-      const offsetY = (4 - shape.length) / 2;
+      const offsetX = (4.5 - shape[0].length) / 2;
+      const offsetY = (5 - shape.length) / 2;
 
       for (let y = 0; y < shape.length; y++) {
         for (let x = 0; x < shape[y].length; x++) {
@@ -841,8 +875,8 @@
 
       if (holdPiece) {
         const { shape, className } = holdPiece;
-        const offsetX = (4 - shape[0].length) / 2;
-        const offsetY = (4 - shape.length) / 2;
+        const offsetX = (4.5 - shape[0].length) / 2;
+        const offsetY = (5 - shape.length) / 2;
 
         for (let y = 0; y < shape.length; y++) {
           for (let x = 0; x < shape[y].length; x++) {
