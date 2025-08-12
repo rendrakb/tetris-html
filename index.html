@@ -226,7 +226,7 @@
       .buttons {
         display: flex;
         gap: 5px;
-        justify-content: right;
+        justify-content: left;
         margin-top: 5px;
         margin-bottom: 5px;
       }
@@ -419,6 +419,41 @@
         box-shadow: none !important;
       }
 
+      .touch-controls {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 2px;
+        margin-top: 2px;
+      }
+
+      .touch-row {
+        display: flex;
+        justify-content: center;
+        gap: 2px;
+      }
+
+      .ctrl-btn {
+        background-color: rgba(255, 255, 255, 0.1);
+        box-shadow: 0 5px 15px rgba(255, 0, 255, 0.4);
+        border: 2px solid var(--primary);
+        color: var(--primary);
+        font-size: 1.2rem;
+        font-weight: bold;
+        align-items: center;
+        padding: 8px 8px;
+        border-radius: 2px;
+        cursor: pointer;
+        user-select: none;
+        min-width: 40px;
+        min-height: 40px;
+      }
+
+      .ctrl-btn:active {
+        background-color: var(--primary);
+        color: black;
+      }
+
       @media (max-width: 768px) {
         body {
           overflow-y: auto;
@@ -475,7 +510,6 @@
           flex-basis: 100%;
         }
       }
-
     </style>
   </head>
   <body>
@@ -483,11 +517,24 @@
     <div class="container">
       <div class="game-area">
         <div class="buttons">
-          <button id="settings-btn-alt">Settings</button>
           <button id="pause-btn">Pause</button>
+          <button id="settings-btn-alt">Settings</button>
         </div>
 
         <div id="game-board"></div>
+
+        <div class="touch-controls">
+          <div class="touch-row">
+            <button class="ctrl-btn" id="btn-left">←</button>
+            <button class="ctrl-btn" id="btn-rotate">⟳</button>
+            <button class="ctrl-btn" id="btn-right">→</button>
+          </div>
+          <div class="touch-row">
+            <button class="ctrl-btn" id="btn-soft">↓</button>
+            <button class="ctrl-btn" id="btn-hard">⤓</button>
+            <button class="ctrl-btn" id="btn-hold">H</button>
+          </div>
+        </div>
 
         <div id="game-over" class="overlay">
           <h2>GAME OVER</h2>
@@ -500,8 +547,8 @@
         <div id="pause-overlay" class="overlay">
           <h2>PAUSED</h2>
           <div class="buttons">
-            <button id="settings-btn">Settings</button>
             <button id="resume-btn">Resume</button>
+            <button id="settings-btn">Settings</button>
           </div>
         </div>
       </div>
@@ -755,6 +802,15 @@
       closeSettingsBtn.addEventListener("click", closeSettings);
       saveSettingsBtn.addEventListener("click", saveSettings);
       resetSettingsBtn.addEventListener("click", resetSettings);
+
+      document.getElementById("btn-left").addEventListener("click", moveLeft);
+      document.getElementById("btn-right").addEventListener("click", moveRight);
+      document.getElementById("btn-rotate").addEventListener("click", rotate);
+      document.getElementById("btn-soft").addEventListener("click", moveDown);
+      document.getElementById("btn-hard").addEventListener("click", hardDrop);
+      document
+        .getElementById("btn-hold")
+        .addEventListener("click", holdCurrentPiece);
 
       keybindButtons.forEach((btn) => {
         btn.addEventListener("click", startRebinding);
